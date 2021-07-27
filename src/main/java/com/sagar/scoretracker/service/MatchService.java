@@ -13,11 +13,11 @@ import java.util.Random;
 import java.util.UUID;
 
 @Service
-@AllArgsConstructor
+//@AllArgsConstructor
 @Slf4j
 public class MatchService {
 
-    private MatchRepository matchRepository;
+    //private MatchRepository matchRepository;
 
     public Game createNewMatch(CreateMatchReq req) {
         Game newMatch = Game.builder()
@@ -26,7 +26,7 @@ public class MatchService {
                             .awayTeam(req.getAwayTeam())
                             .overs(req.getOvers())
                             .build();
-        matchRepository.save(newMatch);
+       // matchRepository.save(newMatch);
         return newMatch;
     }
 
@@ -34,22 +34,22 @@ public class MatchService {
         String call = req.getHeadOrTails();
         String tossResult = "";
         String winningTeam = "";
-        Optional<Game> match =  matchRepository.findById(UUID.fromString(matchId));
-        if(match.isPresent()) {
-            log.info(match.get().getHomeTeam());
-            Random r = new Random();
-            int chance = r.nextInt(2);
-            switch (chance) {
-                case 1:
-                    tossResult = "tails";
-                case 0:
-                    tossResult = "heads";
-            }
-            log.info(tossResult);
-            if(call.startsWith(tossResult.substring(0,1))) {
-                winningTeam = match.get().getHomeTeam();
-            }
-        }
+        //Optional<Game> match =  matchRepository.findById(UUID.fromString(matchId));
+//         if(match.isPresent()) {
+//             log.info(match.get().getHomeTeam());
+//             Random r = new Random();
+//             int chance = r.nextInt(2);
+//             switch (chance) {
+//                 case 1:
+//                     tossResult = "tails";
+//                 case 0:
+//                     tossResult = "heads";
+//             }
+//             log.info(tossResult);
+//             if(call.startsWith(tossResult.substring(0,1))) {
+//                 winningTeam = match.get().getHomeTeam();
+//             }
+//         }
         return winningTeam + " won the toss";
     }
 }
