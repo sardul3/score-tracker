@@ -12,7 +12,7 @@ import javax.persistence.Id;
 import java.util.UUID;
 
 @Data
-@Entity
+//@Entity
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
