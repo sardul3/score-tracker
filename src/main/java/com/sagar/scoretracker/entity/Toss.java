@@ -7,7 +7,7 @@ import javax.persistence.Id;
 import java.util.UUID;
 
 @Data
-@Entity
+//@Entity
 public class Toss {
     @Id
     private UUID tossId;
